@@ -1,0 +1,117 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Generated schema for Root",
+  "type": "object",
+  "properties": {
+    "Supermarket": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number"
+        },
+        "Employees": {
+          "type": "object",
+          "properties": {
+            "Employee": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "type": "string"
+                },
+                "lastName": {
+                  "type": "string"
+                },
+                "age": {
+                  "type": "number"
+                },
+                "contratationDate": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "firstName",
+                "lastName",
+                "age",
+                "contratationDate"
+              ]
+            }
+          },
+          "required": [
+            "Employee"
+          ]
+        },
+        "Product": {
+          "type": "object",
+          "properties": {
+            "productName": {
+              "type": "string"
+            },
+            "productPrice": {
+              "type": "number"
+            },
+            "productCategory": {
+              "type": "string"
+            },
+            "expirationDate": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "productName",
+            "productPrice",
+            "productCategory",
+            "expirationDate"
+          ]
+        },
+        "Equipment": {
+          "type": "object",
+          "properties": {
+            "equipmentName": {
+              "type": "string"
+            },
+            "equipmentType": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "equipmentName",
+            "equipmentType"
+          ]
+        },
+        "Provider": {
+          "type": "object",
+          "properties": {
+            "providerName": {
+              "type": "string"
+            },
+            "providerType": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "providerName",
+            "providerType"
+          ]
+        },
+        "supermarketName": {
+          "type": "string"
+        },
+        "openingDate": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "Employees",
+        "Product",
+        "Equipment",
+        "Provider",
+        "supermarketName",
+        "openingDate"
+      ]
+    }
+  },
+  "required": [
+    "Supermarket"
+  ]
+}
