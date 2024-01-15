@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Supermarket id="1">
+    <employees>
+        <employee>
+            <firstName>John</firstName>
+            <lastName>Doe</lastName>
+            <age>25</age>
+            <contratationDate>2022-01-10T00:00:00-03:00</contratationDate>
+        </employee>
+    </employees>
+    <product>
+        <expirationDate>2023-01-01T00:00:00-03:00</expirationDate>
+        <productCategory>Example Category</productCategory>
+        <productName>Example Product</productName>
+        <productPrice>10</productPrice>
+    </product>
+    <equipment>
+        <equipmentName>Example Equipment</equipmentName>
+        <equipmentType>Example Type</equipmentType>
+    </equipment>
+    <provider>
+        <providerName>Example Provider</providerName>
+        <providerType>Example Type</providerType>
+    </provider>
+    <supermarketName>Example Supermarket</supermarketName>
+    <openingDate>11/11/2022</openingDate>
+</Supermarket>
