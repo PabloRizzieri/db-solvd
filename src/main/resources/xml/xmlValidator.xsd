@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified"
+           xmlns:jaxb="http://www.w3.org/2001/XMLSchema-instance"
+           jaxb:version="2.0">
+
+    <xs:element name="Supermarket">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="employees">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="employee">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="firstName" type="xs:string"/>
+                                        <xs:element name="lastName" type="xs:string"/>
+                                        <xs:element name="age" type="xs:int"/>
+                                        <xs:element name="contratationDate" type="xs:date"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="product" type="ProductType"/>
+                <xs:element name="equipment" type="EquipmentType"/>
+                <xs:element name="provider" type="ProviderType"/>
+                <xs:element name="supermarketName" type="xs:string"/>
+                <xs:element name="openingDate" type="xs:string"/>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:int"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="ProductType">
+        <xs:sequence>
+            <xs:element name="productName" type="xs:string"/>
+            <xs:element name="productPrice" type="xs:double"/>
+            <xs:element name="productCategory" type="xs:string"/>
+            <xs:element name="expirationDate" type="xs:date"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="EquipmentType">
+        <xs:sequence>
+            <xs:element name="equipmentName" type="xs:string"/>
+            <xs:element name="equipmentType" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ProviderType">
+        <xs:sequence>
+            <xs:element name="providerName" type="xs:string"/>
+            <xs:element name="providerType" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
