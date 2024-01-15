@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.IEquipmentsDAO">
+
+    <resultMap id="result" type="model.Equipments">
+        <id property="ID" column="id"/>
+        <result property="equipmentName" column="name"/>
+        <result property="Supermarket_id" column="supermarket_id"/>
+    </resultMap>
+
+    <select id="getEntityById" parameterType="Integer" resultMap="result">
+        SELECT * FROM equipments WHERE id = #{ID}
+    </select>
+
+    <select id="getEquipments" resultMap="result">
+        SELECT * FROM equipments
+    </select>
+
+    <insert id="insertEquipments" parameterType="model.Equipments" useGeneratedKeys="true" keyProperty="ID"
+            timeout="20">
+        INSERT INTO equipments (name, supermarket_id)
+        VALUES (#{equipmentName}, #{Supermarket_id})
+    </insert>
+
+    <update id="updateEquipments" parameterType="model.Equipments">
+        UPDATE equipments SET
+        name = #{equipmentName},
+        supermarket_id = #{Supermarket_id}
+        WHERE id = #{ID}
+    </update>
+
+    <delete id="removeEquipments">
+        DELETE FROM equipments WHERE id = #{ID}
+    </delete>
+</mapper>

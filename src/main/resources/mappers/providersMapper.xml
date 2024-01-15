@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.IProvidersDAO">
+
+    <resultMap id="result" type="model.Providers">
+        <id property="ID" column="id"/>
+        <result property="providerName" column="provider_name"/>
+        <result property="providerBranch" column="provider_branch"/>
+
+    </resultMap>
+
+    <select id="getEntityById" parameterType="Integer" resultMap="result">
+        SELECT * FROM providers WHERE id = #{ID}
+    </select>
+
+    <select id="getProviders" resultMap="result">
+        SELECT * FROM providers
+    </select>
+
+    <insert id="insertProviders" parameterType="model.Providers" useGeneratedKeys="true" keyProperty="ID"
+            timeout="20">
+        INSERT INTO providers (provider_name, provider_branch)
+        VALUES (#{providerName}, #{providerBranch})
+    </insert>
+
+    <update id="updateProviders" parameterType="model.Providers">
+        UPDATE providers SET
+        provider_name = #{providerName},
+        provider_branch = #{providerBranch},
+        WHERE id = #{ID}
+    </update>
+
+    <delete id="removeProviders">
+        DELETE FROM providers WHERE id = #{ID}
+    </delete>
+</mapper>

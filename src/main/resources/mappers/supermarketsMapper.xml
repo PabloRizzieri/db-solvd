@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.ISupermarketsDAO">
+
+    <resultMap id="result" type="model.Supermarkets">
+        <id property="ID" column="id"/>
+        <result property="name" column="supermarket_name"/>
+
+
+    </resultMap>
+
+    <select id="getEntityById" parameterType="Integer" resultMap="result">
+        SELECT * FROM supermarkets WHERE id = #{ID}
+    </select>
+
+    <select id="getSupermarkets" resultMap="result">
+        SELECT * FROM supermarkets
+    </select>
+
+    <insert id="insertSupermarkets" parameterType="model.Supermarkets" useGeneratedKeys="true" keyProperty="ID"
+            timeout="20">
+        INSERT INTO supermarkets (supermarket_name)
+        VALUES (#{name})
+    </insert>
+
+    <update id="updateSupermarkets" parameterType="model.Supermarkets">
+        UPDATE supermarkets SET
+        supermarket_name = #{name},
+        WHERE id = #{ID}
+    </update>
+
+    <delete id="removeSupermarkets">
+        DELETE FROM supermarkets WHERE id = #{ID}
+    </delete>
+</mapper>

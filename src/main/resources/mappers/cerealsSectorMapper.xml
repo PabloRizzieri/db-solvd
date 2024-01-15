@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.ICerealsSectorDAO">
+
+    <resultMap id="result" type="model.CerealsSector">
+        <id property="ID" column="id"/>
+        <result property="flavour" column="flavour"/>
+        <result property="Product_id" column="product_id"/>
+        <result property="Products_Supermarket_id" column="product_supermarket_id"/>
+    </resultMap>
+
+    <select id="getEntityById" parameterType="Integer" resultMap="result">
+        SELECT * FROM cereal_sector WHERE id = #{ID}
+    </select>
+
+    <select id="getCerealsSector" resultMap="result">
+        SELECT * FROM cereal_sector
+    </select>
+
+    <insert id="insertCerealsSector" parameterType="model.CerealsSector" useGeneratedKeys="true" keyProperty="ID"
+            timeout="20">
+        INSERT INTO cereal_sector (flavour, product_id, product_supermarket_id)
+        VALUES (#{flavour}, #{Product_id}, #{Product_Supermarket_id})
+    </insert>
+
+    <update id="updateCerealsSector" parameterType="model.CerealsSector">
+        UPDATE cereal_sector SET
+        flavour = #{flavour},
+        product_id = #{Product_id},
+        product_supermarket_id = #{Product_Supermarket_id}
+        WHERE id = #{ID}
+    </update>
+
+    <delete id="removeCerealsSector">
+        DELETE FROM cereal_sector WHERE id = #{ID}
+    </delete>
+</mapper>

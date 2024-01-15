@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.ISupermarketProvidersDAO">
+
+    <resultMap id="result" type="model.SupermarketProviders">
+        <result property="Supermarket_id" column="supermarket_id"/>
+        <result property="Provider_id" column="provider_id"/>
+    </resultMap>
+
+    <select id="getSupermarketProvidersByIds" parameterType="map" resultMap="result">
+        SELECT * FROM supermarket_providers
+        WHERE supermarket_id = #{Supermarket_id} AND provider_id = #{Provider_id}
+    </select>
+
+    <select id="getSupermarketProvidersBySupermarketId" parameterType="int" resultMap="result">
+        SELECT * FROM supermarket_providers
+        WHERE supermarket_id = #{Supermarket_id}
+    </select>
+
+    <select id="getSupermarketProvidersByProviderId" parameterType="int" resultMap="result">
+        SELECT * FROM supermarket_providers
+        WHERE provider_id = #{Provider_id}
+    </select>
+
+    <insert id="insertSupermarketProviders" parameterType="model.SupermarketProviders">
+        INSERT INTO supermarket_providers (supermarket_id, provider_id)
+        VALUES (#{Supermarket_id}, #{Provider_id})
+    </insert>
+
+    <update id="updateSupermarketProviders" parameterType="model.SupermarketProviders">
+        UPDATE supermarket_providers
+        SET supermarket_id = #{Supermarket_id}
+        WHERE provider_id = #{Provider_id}
+    </update>
+
+    <delete id="deleteSupermarketProvidersByIds" parameterType="map">
+        DELETE FROM supermarket_providers
+        WHERE supermarket_id = #{Supermarket_id} AND provider_id = #{Provider_id}
+    </delete>
+
+</mapper>

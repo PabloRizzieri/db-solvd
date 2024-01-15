@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.IDepartmentsDAO">
+
+    <resultMap id="result" type="model.Departments">
+        <id property="ID" column="id"/>
+        <result property="departmentTask" column="task"/>
+        <result property="departmentName" column="name"/>
+        <result property="Supermarket_id" column="supermarket_id"/>
+    </resultMap>
+
+    <select id="getEntityById" parameterType="Integer" resultMap="result">
+        SELECT * FROM departments WHERE id = #{ID}
+    </select>
+
+    <select id="getDepartments" resultMap="result">
+        SELECT * FROM departments
+    </select>
+
+    <insert id="insertDepartments" parameterType="model.Departments" useGeneratedKeys="true" keyProperty="ID"
+            timeout="20">
+        INSERT INTO departments (task, name, supermarket_id)
+        VALUES (#{departmentTask}, #{departmentName}, #{Supermarket_id})
+    </insert>
+
+    <update id="updateDepartments" parameterType="model.Departments">
+        UPDATE departments SET
+        task = #{departmentTask},
+        name = #{departmentName},
+        supermarket_id = #{Supermarket_id}
+        WHERE id = #{ID}
+    </update>
+
+    <delete id="removeDepartments">
+        DELETE FROM departments WHERE id = #{ID}
+    </delete>
+</mapper>

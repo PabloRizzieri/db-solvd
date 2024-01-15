@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.IMeatsSectorDAO">
+
+    <resultMap id="result" type="model.MeatsSector">
+        <id property="ID" column="id"/>
+        <result property="type" column="type"/>
+        <result property="expiration_date" column="expiration_date"/>
+        <result property="Product_id" column="product_id"/>
+        <result property="Products_Supermarket_id" column="product_supermarket_id"/>
+    </resultMap>
+
+    <select id="getEntityById" parameterType="Integer" resultMap="result">
+        SELECT * FROM meats_sector WHERE id = #{ID}
+    </select>
+
+    <select id="getMeatsSector" resultMap="result">
+        SELECT * FROM meats_sector
+    </select>
+
+    <insert id="insertMeatsSector" parameterType="model.MeatsSector" useGeneratedKeys="true" keyProperty="ID"
+            timeout="20">
+        INSERT INTO meats_sector (type, expiration_date, product_id, product_supermarket_id)
+        VALUES (#{type}, #{expiration_date}, #{Product_id}, #{Products_Supermarket_id})
+    </insert>
+
+    <update id="updateMeatsSector" parameterType="model.MeatsSector">
+        UPDATE meats_sector SET
+        type = #{type},
+        expiration_date = #{expiration_date},
+        product_id = #{Product_id},
+        product_supermarket_id = #{Products_Supermarket_id}
+        WHERE id = #{ID}
+    </update>
+
+    <delete id="remoteMeatsSector">
+        DELETE FROM meats_sector WHERE id = #{ID}
+    </delete>
+</mapper>

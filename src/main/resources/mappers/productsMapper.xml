@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.IProductsDAO">
+
+    <resultMap id="result" type="model.Products">
+        <id property="ID" column="id"/>
+        <result property="Supermarket_id" column="supermarket_id"/>
+        <result property="Provider_id" column="provider_id"/>
+        <result property="productName" column="product_name"/>
+        <result property="category" column="category"/>
+        <result property="price" column="price"/>
+    </resultMap>
+
+    <select id="getEntityById" parameterType="Integer" resultMap="result">
+        SELECT * FROM products WHERE id = #{ID}
+    </select>
+
+    <select id="getProducts" resultMap="result">
+        SELECT * FROM products
+    </select>
+
+    <insert id="insertProducts" parameterType="model.Products" useGeneratedKeys="true" keyProperty="ID"
+            timeout="20">
+        INSERT INTO products (supermarket_id, provider_id, product_name, category, price)
+        VALUES (#{Supermarket_id}, #{Provider_id}, #{productName}, #{category}, #{price})
+    </insert>
+
+    <update id="updateProducts" parameterType="model.Products">
+        UPDATE products SET
+        supermarket_id = #{Supermarket_id},
+        provider_id = #{Provider_id},
+        product_name = #{productName},
+        category = #{category},
+        price = #{price}
+        WHERE id = #{ID}
+    </update>
+
+    <delete id="removeProducts">
+        DELETE FROM products WHERE id = #{ID}
+    </delete>
+</mapper>
