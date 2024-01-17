@@ -54,4 +54,9 @@ public class Equipments {
             return this.equipments;
         }
     }
+
+    // Listener Pattern
+    public interface EquipmentListener {
+        void onEquipmentChanged(Equipments equipment);
+    }
 }
