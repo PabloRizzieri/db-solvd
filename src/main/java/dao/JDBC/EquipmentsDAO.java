@@ -1,11 +1,10 @@
 package dao.JDBC;
 
 import dao.IEquipmentsDAO;
-import model.Employees;
 import model.Equipments;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import utils.ConnectionPool;
+import utils.connectionPool.ConnectionPool;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -27,7 +26,7 @@ public class EquipmentsDAO implements IEquipmentsDAO {
     @Override
     public Equipments getEntityById(int id) {
         Connection connection = connectionPool.retrieve();
-        Equipments equipments = new Equipments();
+        Equipments.Builder equipmentsBuilder = new Equipments.Builder();
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         try {
@@ -36,9 +35,10 @@ public class EquipmentsDAO implements IEquipmentsDAO {
             preparedStatement.execute();
             resultSet = preparedStatement.getResultSet();
             while (resultSet.next()) {
-                equipments.setID(resultSet.getInt("id"));
-                equipments.setEquipmentName(resultSet.getString("name"));
-                equipments.setSupermarket_id(resultSet.getInt("supermarket_id"));
+                equipmentsBuilder
+                        .withID(resultSet.getInt("id"))
+                        .withEquipmentName(resultSet.getString("name"))
+                        .withSupermarketId(resultSet.getInt("supermarket_id"));
             }
         } catch (SQLException e) {
             logger.error("Error retrieving Equipments entity by ID: {}", e.getMessage());
@@ -47,7 +47,7 @@ public class EquipmentsDAO implements IEquipmentsDAO {
             closeAll(preparedStatement, resultSet);
         }
 
-        return equipments;
+        return equipmentsBuilder.build();
     }
 
     /**
@@ -151,11 +151,12 @@ public class EquipmentsDAO implements IEquipmentsDAO {
             preparedStatement.execute();
             resultSet = preparedStatement.getResultSet();
             while (resultSet.next()) {
-                Equipments equipments = new Equipments();
-                equipments.setID(resultSet.getInt("id"));
-                equipments.setEquipmentName(resultSet.getString("name"));
-                equipments.setSupermarket_id(resultSet.getInt("supermarket_id"));
-                list.add(equipments);
+                Equipments.Builder equipmentBuilder = new Equipments.Builder();
+                equipmentBuilder
+                        .withID(resultSet.getInt("id"))
+                        .withEquipmentName(resultSet.getString("name"))
+                        .withSupermarketId(resultSet.getInt("supermarket_id"));
+                list.add(equipmentBuilder.build());
             }
         } catch (SQLException e) {
             logger.error("Error retrieving Equipments entities: {}", e.getMessage());
