@@ -6,11 +6,10 @@ import model.Equipments;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import strategy.SortByEquipmentID;
-import utils.DAOFactoryGenerator;
+import utils.dao.DAOFactoryGenerator;
 import view.ConsoleEquipmentView;
 import view.EquipmentView;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
