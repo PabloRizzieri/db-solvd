@@ -89,7 +89,7 @@ public class ConnectionPool {
      *
      * @param connection The Connection object to be put back into the pool.
      */
-    public synchronized void putback(Connection connection) {
+    public synchronized void putBack(Connection connection) {
         if (connection != null) {
             if (activeConnections.removeElement(connection)) {
                 conPool.addElement(connection);
