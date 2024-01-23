@@ -4,7 +4,7 @@ import dao.ICleaningsSectorDAO;
 import model.CleaningsSector;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import utils.ConnectionPool;
+import utils.connectionPool.ConnectionPool;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

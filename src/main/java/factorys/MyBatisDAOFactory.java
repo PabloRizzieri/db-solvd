@@ -5,7 +5,7 @@ import dao.MyBatis.*;
 import enums.DAOType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import utils.AbstractFactory;
+import utils.abstractFactory.AbstractFactory;
 
 public class MyBatisDAOFactory extends AbstractFactory {
     private static Logger logger = LogManager.getLogger(MyBatisDAOFactory.class);
