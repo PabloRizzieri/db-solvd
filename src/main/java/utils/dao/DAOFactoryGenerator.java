@@ -1,10 +1,11 @@
-package utils;
+package utils.dao;
 
 import enums.FactoryType;
 import factorys.JdbcDAOFactory;
 import factorys.MyBatisDAOFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import utils.abstractFactory.AbstractFactory;
 
 /**
  * Utility class responsible for generating instances of AbstractFactory based on the provided FactoryType.
