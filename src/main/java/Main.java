@@ -4,6 +4,8 @@ import decorator.ProvidersDecorator;
 import decorator.ProvidersDecoratorImplementation;
 import enums.DAOType;
 import enums.FactoryType;
+import facade.DepartmentsFacade;
+import model.Departments;
 import model.Equipments;
 import model.Providers;
 import org.apache.logging.log4j.LogManager;
@@ -98,6 +100,22 @@ public class Main {
 
         // Show decorated info
         System.out.println(decorator.displayInfo());
+
+
+        // ------- FACADE ---------
+        // Create an instance of Departments
+        Departments originalDepartments = new Departments();
+        originalDepartments.setID(1);
+        originalDepartments.setDepartmentName("Example Department");
+        originalDepartments.setSupermarket_id(123);
+
+        // Create an instance of Departments Facade
+        DepartmentsFacade departmentsFacade = new DepartmentsFacade(originalDepartments);
+
+        // Utilize the facade to interact with Departments
+        System.out.println(departmentsFacade.getDepartmentInfo());
+
+        departmentsFacade.assignTask("Manage Inventory");
 
     }
 }
