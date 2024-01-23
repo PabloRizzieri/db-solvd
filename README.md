@@ -1,11 +1,7 @@
-## Database Schema Creation - First Task
-
-This section outlines the tasks involved in creating a database schema using MySQL Workbench for a new hierarchy. The primary goal is to establish a well-organized schema with at least 12 tables while adhering to the principles of the 3 Normal Forms.
-
+## Database Creation - First Task
 
 - Create a database schema using Mysql Workbench for the new hierarchy
-with at least 12 tables and all relations. 
-- The schema should satisfy the 3 Normal Forms.
+- with at least 12 tables and all relations. The schema should satisfy the 3 Normal Forms.
 
 ## Database Operations - Second Task
 
@@ -49,3 +45,4 @@ This section outlines tasks for creating an XML file, XSD schema, and parsing XM
 - Add Factory, Abstract Factory, Builder, Listener, Facade, Decorator, Proxy, Strategy, MVC patterns to your current project.
 
 - Refactor code for the current project to satisfy SOLID principles.
+
