@@ -1,8 +1,11 @@
 import controller.EquipmentController;
 import dao.IEquipmentsDAO;
+import decorator.ProvidersDecorator;
+import decorator.ProvidersDecoratorImplementation;
 import enums.DAOType;
 import enums.FactoryType;
 import model.Equipments;
+import model.Providers;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import strategy.SortByEquipmentID;
@@ -79,6 +82,22 @@ public class Main {
 
         // Display the sorted Equipments
         equipmentController.displaySortEquipments();
+
+        // -------- DECORATOR ---------
+        // Create an instance of Providers
+        Providers originalProviders = new Providers();
+        originalProviders.setID(1);
+        originalProviders.setProviderName("Example Provider");
+        originalProviders.setProviderBranch("Main Branch");
+
+        // Create a decorator for Providers
+        ProvidersDecorator decorator = new ProvidersDecoratorImplementation(originalProviders);
+
+        // Show original information
+        System.out.println("Original Information: " + originalProviders.toString());
+
+        // Show decorated info
+        System.out.println(decorator.displayInfo());
 
     }
 }
