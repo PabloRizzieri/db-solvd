@@ -44,3 +44,8 @@ This section outlines tasks for creating an XML file, XSD schema, and parsing XM
 - Parse XML file using one of the parsers from the title.
 - Add JAXB annotations to the hierarchy. Date, List, and complex objects should be covered.
 - Parse XML using JAXB.
+
+## Design Patterns and SOLID Principles
+- Add Factory, Abstract Factory, Builder, Listener, Facade, Decorator, Proxy, Strategy, MVC patterns to your current project.
+
+- Refactor code for the current project to satisfy SOLID principles.
